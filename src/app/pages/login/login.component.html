@@ -1,0 +1,88 @@
+
+<div class="cajacentradita">
+
+<div class="card">
+  <form [formGroup]="myForm" (ngSubmit)="login()">
+    <div class="cabecera">
+      <mat-icon class="customIconSize2">  home </mat-icon>
+      <mat-card-title class="titulo">Ingresar</mat-card-title>
+    </div>
+    <div class="cuerpo">
+      <!-- Email -->
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingrese su Email</mat-label>
+          <input matInput type="email" formControlName="correo" />
+          <button mat-icon-button matSuffix type="button">
+            <mat-icon> email </mat-icon>
+          </button>
+          <div
+            *ngIf="myForm.get('correo')?.errors && myForm.get('correo')?.dirty"
+          >
+            <mat-hint>
+              <mat-icon class="customIconSize"> arrow_upward </mat-icon>El campo
+              es obligatorio
+            </mat-hint>
+          </div>
+        </mat-form-field>
+      </div>
+
+      <!-- Contraseña -->
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ingrese su Contraseña</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="clave"
+          [ngClass]="{
+            error:
+              myForm.get('clave')?.hasError('required') &&
+              myForm.get('clave')?.dirty,
+            warning:
+              myForm.get('clave')?.hasError('minlength') &&
+              myForm.get('clave')?.dirty
+          }"
+        />
+
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          type="button"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <div *ngIf="myForm.get('clave')?.errors && myForm.get('clave')?.dirty">
+          <div *ngIf="myForm.get('clave')?.hasError('required')">
+            <mat-hint>
+              <mat-icon class="customIconSize"> arrow_upward </mat-icon>El campo
+              es obligatorio
+            </mat-hint>
+          </div>
+          <div *ngIf="myForm.get('clave')?.hasError('minlength')">
+            <mat-hint>
+              <mat-icon class="customIconSize"> arrow_upward</mat-icon> Debe
+              tener al menos 6 caracteres
+            </mat-hint>
+          </div>
+        </div>
+      </mat-form-field>
+    </div>
+    <div class="pie">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="myForm.invalid"
+    >
+      Ingresar
+    </button>
+  </div>
+  </form>
+</div>
+
+</div>

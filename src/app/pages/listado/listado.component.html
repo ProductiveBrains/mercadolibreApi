@@ -1,0 +1,105 @@
+<div class="cajitaarriba">
+  <div class="filtradoDeAPI">
+
+    <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadolibre/logo__small.png" alt="">
+    <input type="text" class="buscador" [(ngModel)]="filtro" (ngModelChange)="filtrar()" />
+    <span style="font-weight:400;font-size:14px;margin-left: 20px;">Filtrador API</span>
+  </div>
+
+  <div *ngIf="!filtro" class="filtradoVacio">
+    <p>Ingrese el Producto que desea buscar</p>
+  </div>
+
+
+  <div id="cuerpo">
+    <div class="container">
+
+      <div class="card" *ngFor="let item of mercadolibre.results">
+
+        <div id="child">
+          <a href="{{ item.permalink }}" target="_blank" class="botonMELI">
+            <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadolibre/logo__small.png">
+          </a>
+
+        </div>
+
+        <div id="child2">
+          <!-- <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.15.2/mercadolibre/logo__small.png"
+            alt=""> -->
+          <mat-icon aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon>
+        </div>
+
+        <div class="card-header">
+          <img class="imgProducto" src="{{ item.thumbnail }}" alt="">
+
+          <div class="precio">
+            <span class="tag tag-moneda">
+              {{ item.prices.presentation.display_currency }}
+            </span>
+            {{ item.price | currency: "$" }}
+          </div>
+        </div>
+
+        <div class="card-body">
+
+          <div class="titulo">
+            <span>{{ item.title }}</span>
+          </div>
+
+          <div class="vendor">
+
+            <div class="divPhoto">
+              <a href="{{ item.seller.permalink }}" target="_blank">
+                <img class="imgPhoto"
+                  src="https://st2.depositphotos.com/2212674/11116/i/111/depositphotos_111164466-stock-photo-surprised-businessman-on-the-phone.jpg">
+              </a>
+              <a href="https://listado.mercadolibre.com.ar/_CustId_{{
+                    item.seller.id
+                  }}" target="_blank">
+                <button>Mas Articulos</button>
+              </a>
+            </div>
+
+            <div class="column">
+              <div class="divA">
+                <h4>Vendedor: {{ item.seller.id }}</h4>
+              </div>
+
+              <div class="divB">
+                <small>Inicio Act.:
+                  {{ item.seller.registration_date | date: "dd/MM/yy" }} - {{ item.seller.registration_date | years }}
+                </small>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="transacciones">
+            Transacciones (
+            Total :{{ item.seller.seller_reputation.transactions.total || "0"}}
+            Canceladas:{{ item.seller.seller_reputation.transactions.canceled || "0"}} )
+          </div>
+
+        </div>
+
+        <div class="card-footer">
+          <div class="item item1">
+            <div class="rating">{{ item.seller.seller_reputation.transactions.ratings.positive }}</div>
+            <div class="rating1"> Positivas</div>
+          </div>
+          <div class="item item2">
+            <div class="rating">{{ item.seller.seller_reputation.transactions.ratings.neutral }}</div>
+            <div class="rating2">Nuetras</div>
+          </div>
+          <div class="item item3">
+            <div class="rating">{{ item.seller.seller_reputation.transactions.ratings.negative }}</div>
+            <div class="rating3">Negativas</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

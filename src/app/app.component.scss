@@ -1,72 +1,72 @@
-$primary-color: #333;
+// $primary-color: #333;
 
 
-$rosa: pink;
-$amarillo:yellow;
-$gris:grey;
-$azul:blue;
+// $rosa: pink;
+// $amarillo:yellow;
+// $gris:grey;
+// $azul:blue;
 
-%message-shared {
-  border: 1px solid #ccc;
-  padding: 10px;
-  color: #333;
-}
-
-
-
-@mixin tituloGrande($fondo,$texto) {
-  background-color: $fondo;
-  color:$texto;
-  padding:10px;
-  text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 40px;
-}
-
-@mixin tituloChico($fondo,$texto: black) {
-  background-color: $fondo;
-  color:$texto;
-  padding:10px;
-  text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 20px;
-}
-
-.tit1 { @include tituloGrande($amarillo,$rosa); }
-
-.tit2 {@include tituloChico($azul,$amarillo )}
-
-.tit3 {@include tituloChico($azul, )}
+// %message-shared {
+//   border: 1px solid #ccc;
+//   padding: 10px;
+//   color: #333;
+// }
 
 
-H2 {
-  background-color: $primary-color;
-  color:$rosa;
-  padding:10px;
 
-}
-H3 {
-  border: 1px solid $primary-color;
-}
-H4{
-  background-color:$rosa;
-}
+// @mixin tituloGrande($fondo,$texto) {
+//   background-color: $fondo;
+//   color:$texto;
+//   padding:10px;
+//   text-align: center;
+//   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+//   font-size: 40px;
+// }
 
-.message {
-  @extend %message-shared;
-}
+// @mixin tituloChico($fondo,$texto: black) {
+//   background-color: $fondo;
+//   color:$texto;
+//   padding:10px;
+//   text-align: center;
+//   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+//   font-size: 20px;
+// }
 
-.success {
-  @extend %message-shared;
-  border-color: green;
-}
+// .tit1 { @include tituloGrande($amarillo,$rosa); }
 
-.error {
-  @extend %message-shared;
-  border-color: red;
-}
+// .tit2 {@include tituloChico($azul,$amarillo )}
 
-.warning {
-  @extend %message-shared;
-  border-color: yellow;
-}
+// .tit3 {@include tituloChico($azul, )}
+
+
+// H2 {
+//   background-color: $primary-color;
+//   color:$rosa;
+//   padding:10px;
+
+// }
+// H3 {
+//   border: 1px solid $primary-color;
+// }
+// H4{
+//   background-color:$rosa;
+// }
+
+// .message {
+//   @extend %message-shared;
+// }
+
+// .success {
+//   @extend %message-shared;
+//   border-color: green;
+// }
+
+// .error {
+//   @extend %message-shared;
+//   border-color: red;
+// }
+
+// .warning {
+//   @extend %message-shared;
+//   border-color: yellow;
+// }
